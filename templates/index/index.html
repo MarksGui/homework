@@ -1,0 +1,43 @@
+{{ define "index/index.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .highlight{
+            background-color:#00bfff
+        }
+        th,td{
+            text-align:center
+        }
+        th{
+            padding: 5px 20px;
+        }
+    </style>
+</head>
+<body>
+    <table border="1px" cellspacing="0" cellpadding="0">
+        <tr>
+            <td colspan="3" align="center" valign="center">编程语言调查</td>
+        </tr>
+        <tr>
+            <th >姓名</th>
+            <th >工作所用语言</th>
+            <th>业余试用语言</th>
+        </tr>
+        {{ range . }}
+        <tr
+            {{if .Highlight}}
+                class="highlight"
+            {{end}}
+        >
+            <td>{{ .Name }}</td>
+            <td>{{ .PrimaryProgram }}</td>
+            <td>{{ .AmateurishProgram }}</td>
+        </tr>
+        {{ end }}
+    </table>
+</body>
+</html>
+{{ end }}
